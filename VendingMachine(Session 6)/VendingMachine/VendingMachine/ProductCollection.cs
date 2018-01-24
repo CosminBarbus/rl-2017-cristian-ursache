@@ -8,64 +8,34 @@ namespace VendingMachine
 {
     class ProductCollection
     {
+        private PaymentTerminal terminal = new PaymentTerminal();
 
-        /*
-        //Categories
-        static ProductCategory Soda = new ProductCategory("Soda");
-        static ProductCategory Snack = new ProductCategory("Snack");
-        static ProductCategory Sandwich = new ProductCategory("Sandwich");
+        internal PaymentTerminal Terminal
+        {
+            get
+            {
+                return terminal;
+            }
 
-        //Products
-        // Soda 
-        static Product CocaCola = new Product("Coca-Cola 250", 0.5, 1, Soda);
-        static Product Sprite = new Product("Sprite 330", 0.75, 2, Soda);
-        static Product Fanta = new Product("Fanta 500", 1, 3, Soda);
-
-
-        // Snack 
-        static Product Snickers = new Product("Snickers", 0.75, 1, Snack);
-        static Product Cheetos = new Product("Cheetos", 1, 2, Snack);
-        static Product Lays = new Product("Lays", 1.5, 3, Snack);
-
-        // Sandwich
-        static Product BaconSandwich = new Product("Bacon Sandwich", 1, 1, Sandwich);
-        static Product Crisp = new Product("Crisp",1.5, 2, Sandwich);
-        static Product Kebab = new Product("Kebab", 2, 3, Sandwich);
-
-        
-        //ContainableItem
-        ContainableItem sprite = new ContainableItem(Sprite);
-        ContainableItem cocacola = new ContainableItem(CocaCola);
-        ContainableItem fanta = new ContainableItem(Fanta);
-        ContainableItem snickers = new ContainableItem(Snickers);
-        ContainableItem cheetos = new ContainableItem(Cheetos);
-        ContainableItem lays = new ContainableItem(Lays);
-        ContainableItem baconSandwich = new ContainableItem(BaconSandwich);
-        ContainableItem crisp = new ContainableItem(Crisp);
-        ContainableItem kebab = new ContainableItem(Kebab); 
-        */
-        //Dispensers
-        /*
-        Dispenser cocaColaBand = new Dispenser(1);
-        Dispenser spriteBand = new Dispenser(2);
-        Dispenser fantaBand = new Dispenser(3);
-
-        Dispenser snickersBand = new Dispenser(1);
-        Dispenser cheetosBand = new Dispenser(2);
-        Dispenser laysBand = new Dispenser(3);
-
-        Dispenser baconSandwichBand = new Dispenser(1);
-        Dispenser CrispBand = new Dispenser(2);
-        Dispenser KebabBand = new Dispenser(3);
-        */
+            set
+            {
+                terminal = value;
+            }
+        }
 
         public bool Add(Dispenser band)
         {
-            if (band.AddItem())
-                return true;
-            else
-                return false;
-            
+            for (int i = 0; i < 10; i++)
+            {
+                if (band.Slot[i] == 0)
+                {
+                    band.Slot[i] = 1;
+                    return true;
+                }
+
+            }
+            return false;
+
         }
        
        public bool Remove(Dispenser band)
@@ -85,19 +55,17 @@ namespace VendingMachine
             }
             return count;
         }
-        public void Payment(float dollars)
-        {
-            //if()
-        }
 
-        public float GetItem(Dispenser band, float money)
+
+        public bool GetItem(Dispenser band, float money)
         {
-            if (band.Product.price <= money)
+            if (band.Item.price <= money)
             {
-                money -= (float)band.Product.price;
                 Remove(band);
+                Terminal.GiveChange(money - (float)band.Item.price);
+                return true;
             }
-            return money;
+            return false;
         }
         /*public void GetItem()
         {

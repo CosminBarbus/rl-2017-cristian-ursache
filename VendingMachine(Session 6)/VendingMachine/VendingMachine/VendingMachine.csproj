@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ContainableItem.cs" />
     <Compile Include="Dispenser.cs" />
+    <Compile Include="PaymentTerminal.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductCategory.cs" />
     <Compile Include="ProductCollection.cs" />

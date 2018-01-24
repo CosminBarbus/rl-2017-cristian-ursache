@@ -10,7 +10,7 @@ namespace VendingMachine
     {
         private sbyte Row;
         private sbyte Column;
-        private Product Prod;
+        private Product Product;
 
         public sbyte row
         {
@@ -42,12 +42,12 @@ namespace VendingMachine
         {
             get
             {
-                return Prod;
+                return Product;
             }
 
             set
             {
-                Prod = value;
+                Product = value;
             }
         }
 
@@ -97,5 +97,16 @@ namespace VendingMachine
             SetRowCol();
 
         }
+
+        public ContainableItem(string Name, double Price, int Size, ProductCategory Category)
+            {
+                Product pr = new Product();
+                pr.name = Name;
+                pr.price = Price;
+                pr.size = Size;
+                pr.category = Category;
+                product = pr;
+            
+            }
     }
 }

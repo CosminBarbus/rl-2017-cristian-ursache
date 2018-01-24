@@ -9,7 +9,7 @@ namespace VendingMachine
     class Dispenser
     {
         private int[] slot = new int[10];
-        private Product product;
+        private ContainableItem item;
         
 
         public int[] Slot
@@ -25,33 +25,20 @@ namespace VendingMachine
             }
         }
 
-        internal Product Product
+        internal ContainableItem Item
         {
             get
             {
-                return product;
+                return item;
             }
 
             set
             {
-                product = value;
+                item = value;
             }
         }
 
-        public bool AddItem()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                if (slot[i] == 0)
-                {
-                    slot[i] = 1;
-                    return true;
-                }
-
-            }
-            return false;
-           
-        }
+        
         public bool Dispose()
         {
             for (int i = 9; i >= 0; i--)
@@ -79,9 +66,9 @@ namespace VendingMachine
             return count;
         }
 
-        public Dispenser(Product product)
+        public Dispenser(ContainableItem Item)
         {
-            Product = product;
+            item = Item;
         }
     }
 }

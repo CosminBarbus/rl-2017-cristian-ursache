@@ -27,20 +27,20 @@ namespace VendingMachine
 
             //Products
             /* Soda */
-            Product CocaCola = new Product("Coca-Cola 250", 0.5, 1, Soda);
-            Product Sprite = new Product("Sprite 330", 0.75, 2, Soda);
-            Product Fanta = new Product("Fanta 500", 1, 3, Soda);
+            ContainableItem CocaCola = new ContainableItem("Coca-Cola 250", 0.5, 1, Soda);
+            ContainableItem Sprite = new ContainableItem("Sprite 330", 0.75, 2, Soda);
+            ContainableItem Fanta = new ContainableItem("Fanta 500", 1, 3, Soda);
 
 
             /* Snack */
-            Product Snickers = new Product("Snickers", 0.75, 1, Snack);
-            Product Cheetos = new Product("Cheetos", 1, 2, Snack);
-            Product Lays = new Product("Lays", 1.5, 3, Snack);
+            ContainableItem Snickers = new ContainableItem("Snickers", 0.75, 1, Snack);
+            ContainableItem Cheetos = new ContainableItem("Cheetos", 1, 2, Snack);
+            ContainableItem Lays = new ContainableItem("Lays", 1.5, 3, Snack);
 
             /* Sandwich */
-            Product BaconSandwich = new Product("Bacon Sandwich", 1, 1, Sandwich);
-            Product Crisp = new Product("Crisp", 1.5, 2, Sandwich);
-            Product Kebab = new Product("Kebab", 2, 3, Sandwich);
+            ContainableItem BaconSandwich = new ContainableItem("Bacon Sandwich", 1, 1, Sandwich);
+            ContainableItem Crisp = new ContainableItem("Crisp", 1.5, 2, Sandwich);
+            ContainableItem Kebab = new ContainableItem("Kebab", 2, 3, Sandwich);
 
             //Dispenser
             Dispenser cocaColaBand = new Dispenser(CocaCola);
@@ -65,19 +65,17 @@ namespace VendingMachine
             dispensers.Add(baconSandwichBand);
             dispensers.Add(CrispBand);
             dispensers.Add(KebabBand);
-            
+
 
 
             ProductCollection collection = new ProductCollection();
+            collection.Terminal.CollectMoney(6, 6, 6, 6);
             collection.Add(cocaColaBand);
             collection.Add(spriteBand);
             int r = collection.Count(dispensers);
-            collection.Remove(cocaColaBand);
+            collection.GetItem(cocaColaBand, 6.50f);
             r = collection.Count(dispensers);
 
-            float money = 3;
-            collection.GetItem(cocaColaBand, money);
-            Console.WriteLine(money);
             Console.ReadKey();
 
            
