@@ -9,11 +9,11 @@ namespace VendingMachine
     class Product
     {
         private string Name;
-        private double Price;
+        private float Price;
         private int Size;
         private ProductCategory Category;
 
-        public Product(string Name, double Price, int Size, ProductCategory Category)
+        public Product(string Name, float Price, int Size, ProductCategory Category)
         {
             name = Name;
             price = Price;
@@ -39,7 +39,7 @@ namespace VendingMachine
             }
         }
 
-        public double price
+        public float price
         {
             get
             {

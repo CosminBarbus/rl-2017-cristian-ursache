@@ -27,19 +27,19 @@ namespace VendingMachine
 
             //Products
             /* Soda */
-            ContainableItem CocaCola = new ContainableItem("Coca-Cola 250", 0.5, 1, Soda);
-            ContainableItem Sprite = new ContainableItem("Sprite 330", 0.75, 2, Soda);
+            ContainableItem CocaCola = new ContainableItem("Coca-Cola 250", 0.5f, 1, Soda);
+            ContainableItem Sprite = new ContainableItem("Sprite 330", 0.75f, 2, Soda);
             ContainableItem Fanta = new ContainableItem("Fanta 500", 1, 3, Soda);
 
 
             /* Snack */
-            ContainableItem Snickers = new ContainableItem("Snickers", 0.75, 1, Snack);
+            ContainableItem Snickers = new ContainableItem("Snickers", 0.75f, 1, Snack);
             ContainableItem Cheetos = new ContainableItem("Cheetos", 1, 2, Snack);
-            ContainableItem Lays = new ContainableItem("Lays", 1.5, 3, Snack);
+            ContainableItem Lays = new ContainableItem("Lays", 1.5f, 3, Snack);
 
             /* Sandwich */
             ContainableItem BaconSandwich = new ContainableItem("Bacon Sandwich", 1, 1, Sandwich);
-            ContainableItem Crisp = new ContainableItem("Crisp", 1.5, 2, Sandwich);
+            ContainableItem Crisp = new ContainableItem("Crisp", 1.5f, 2, Sandwich);
             ContainableItem Kebab = new ContainableItem("Kebab", 2, 3, Sandwich);
 
             //Dispenser
@@ -66,15 +66,27 @@ namespace VendingMachine
             dispensers.Add(CrispBand);
             dispensers.Add(KebabBand);
 
+            List<string> CardRegister = new List<string>();
+            CardRegister.Add("Visa");
+            CardRegister.Add("Master Card");
+            CardRegister.Add("American Express");
+            
 
 
+            
             ProductCollection collection = new ProductCollection();
             collection.Terminal.CollectMoney(6, 6, 6, 6);
             collection.Add(cocaColaBand);
             collection.Add(spriteBand);
+            collection.Add(spriteBand);
+            collection.Add(spriteBand);
             int r = collection.Count(dispensers);
             collection.GetItem(cocaColaBand, 6.50f);
             r = collection.Count(dispensers);
+
+            CreditCard card = new CreditCard("Visa", 5);
+            collection.GetItem(spriteBand, card, CardRegister);
+
 
             Console.ReadKey();
 

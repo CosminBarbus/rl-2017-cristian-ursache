@@ -98,15 +98,10 @@ namespace VendingMachine
 
         }
 
-        public ContainableItem(string Name, double Price, int Size, ProductCategory Category)
+        public ContainableItem(string Name, float Price, int Size, ProductCategory Category)
             {
-                Product pr = new Product();
-                pr.name = Name;
-                pr.price = Price;
-                pr.size = Size;
-                pr.category = Category;
-                product = pr;
-            
+            Product prod = new Product(Name, Price, Size, Category);
+            product = prod;
             }
     }
 }

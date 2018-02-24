@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContainableItem.cs" />
+    <Compile Include="CreditCard.cs" />
+    <Compile Include="CreditCardService.cs" />
     <Compile Include="Dispenser.cs" />
     <Compile Include="PaymentTerminal.cs" />
     <Compile Include="Product.cs" />

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace VendingMachine
 {
-    class PaymentTerminal
+    public class PaymentTerminal
     {
         private int nrCoins10;
         private int nrCoins50;
         private int nrBanknote1;
         private int nrBanknote5;
+
+        private float balance;
 
         public int nrcoins10
         {
@@ -62,6 +64,19 @@ namespace VendingMachine
             set
             {
                 nrBanknote5 = value;
+            }
+        }
+
+        public float Balance
+        {
+            get
+            {
+                return balance;
+            }
+
+            set
+            {
+                balance = value;
             }
         }
 

@@ -37,13 +37,13 @@ namespace VendingMachine
             return false;
 
         }
-       
-       public bool Remove(Dispenser band)
-       {
-           if (band.Dispose()) 
-               return true; 
-           else
-               return false;
+
+        public bool Remove(Dispenser band)
+        {
+            if (band.Dispose())
+                return true;
+            else
+                return false;
         }
 
         public int Count(List<Dispenser> dispensers)
@@ -66,6 +66,19 @@ namespace VendingMachine
                 return true;
             }
             return false;
+        }
+
+        public bool GetItem(Dispenser band, CreditCard card, List<string> CardRegister)
+        {
+            if ((CreditCardService.CreditCardValidation(card, CardRegister)) && CreditCardService.CheckMoney(card, band.Item.product.price))
+            {
+                Terminal.Balance += band.Item.product.price;
+                card.Balance -= band.Item.product.price;
+                Remove(band);
+                return true;
+            }
+            else
+                return false;
         }
         /*public void GetItem()
         {
